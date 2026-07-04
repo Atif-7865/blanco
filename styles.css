@@ -433,15 +433,38 @@ h1, h2, h3, .logo, .overlay-link {
     overflow: hidden;
 }
 
+/* Video Display Control */
 .hero-video {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover; /* Ensures video covers entire background without stretching */
+    object-fit: cover;
     transform: translate(-50%, -50%);
     z-index: -2;
+}
+
+/* Desktop video - show by default, hide on mobile */
+.desktop-video {
+    width: 100vw;
+    height: 100vh;
+}
+
+/* Mobile video - hide by default, show on mobile */
+.mobile-video {
+    display: none;
+}
+
+/* Mobile breakpoint - show mobile video, hide desktop */
+@media (max-width: 900px) {
+    .desktop-video {
+        display: none;
+    }
+    
+    .mobile-video {
+        display: block;
+        width: 100vw;
+        height: 100vh;
+    }
 }
 
 .hero-overlay {
@@ -456,6 +479,11 @@ h1, h2, h3, .logo, .overlay-link {
 
 :root[data-theme="light"] .hero-overlay {
     background: linear-gradient(rgba(248, 245, 240, 0.2), rgba(248, 245, 240, 0.9));
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
 }
 
 .hero-title {
